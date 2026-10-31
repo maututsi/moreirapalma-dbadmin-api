@@ -46,9 +46,16 @@ export const updateVenta = async (req: Request, res: Response) => {
 
     const venta = await ventaRepository.update(id, { fecha, cliente, total, detalles });
 
-    return res.json({
-        message: `Se ha actualizado correctamente la venta ${id}.`,
-        status: 200,
-        data: venta
-    });
+    if (venta) {
+        return res.json({
+            message: `Se ha actualizado correctamente la venta ${id}.`,
+            status: 200,
+            data: venta
+        });
+    } else {
+        return res.json({
+            message: "No se ha podido actualizar la venta.",
+            status: 500
+        });
+    }
 }

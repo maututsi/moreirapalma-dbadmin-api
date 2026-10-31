@@ -22,3 +22,42 @@ export const createProduct = async (req: Request, res: Response) => {
         data: producto
     });
 }
+
+export const deleteProduct = async (req: Request, res: Response) => {
+    const id = Number(req.params.id);
+
+    const exito = await productoRepository.delete(id);
+
+    if (exito) {
+        return res.json({
+            message: `Se ha eliminado correctamente el producto con id ${id}`,
+            status: 200
+        });
+    }
+    else {
+        return res.json({
+            message: `No se ha podido eliminar el producto con id ${id}`,
+            status: 500
+        });
+    }
+}
+
+export const updateProductStock = async (req: Request, res: Response) => {
+    const id = Number(req.params.id);
+    const nuevaCantidad = req.body.cantidad;
+
+    const producto = productoRepository.updateStock(id, nuevaCantidad);
+    
+    if (producto) {
+        return res.json({
+            message: `El producto ${id} se ha actualizado correctamente.`,
+            status: 200,
+            data: producto
+        });
+    } else {
+        return res.json({
+            message: "No se ha podido actualizar el producto.",
+            status: 500
+        });
+    }
+}
