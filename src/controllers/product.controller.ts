@@ -2,7 +2,8 @@ import type { Request, Response } from "express"
 import { productoRepository } from "../repository/ProductoRepository.js";
 
 export const getProduct = async (req: Request, res: Response) => {
-    const producto = await productoRepository.findById(1);
+    const id = req.params.id
+    const producto = await productoRepository.findById(Number(id));
     return res.json({ producto });
 };
 
@@ -19,5 +20,5 @@ export const createProduct = async (req: Request, res: Response) => {
         message: "Producto creado",
         status: 201,
         data: producto
-    })
+    });
 }

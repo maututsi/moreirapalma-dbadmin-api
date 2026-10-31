@@ -27,7 +27,6 @@ export const getUsers = (req: Request, res: Response) => {
     });
 };
 
-// GET /api/users/:id
 export const getUserById = (req: Request, res: Response) => {
     const { id } = req.params;
 
