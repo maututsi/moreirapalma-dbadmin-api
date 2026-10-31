@@ -11,3 +11,5 @@ router.post("/ventas", createVenta);
 router.delete("/venta:id", deleteVentaById);
 
 router.put("/ventas/:id", updateVenta);
+
+export default router;
