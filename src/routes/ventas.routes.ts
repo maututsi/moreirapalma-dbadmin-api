@@ -8,7 +8,7 @@ router.get("/ventas", getVentas);
 
 router.post("/ventas", createVenta);
 
-router.delete("/venta:id", deleteVentaById);
+router.delete("/ventas/:id", deleteVentaById);
 
 router.put("/ventas/:id", updateVenta);
 
